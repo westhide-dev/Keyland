@@ -1,5 +1,7 @@
 [package]
+description       = "keyland"
 edition.workspace = true
+license.workspace = true
 name              = "keyland"
 version.workspace = true
 
