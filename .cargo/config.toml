@@ -1,0 +1,15 @@
+[registries.crates-io]
+protocol = "sparse"
+
+[env]
+ENV_CRATES_DIR = { value = "crates", relative = true }
+
+[alias]
+build-release = "build --release --timings=html"
+
+[build]
+rustflags = ["-Z", "threads=8"]
+
+[unstable]
+gc               = true
+unstable-options = true
