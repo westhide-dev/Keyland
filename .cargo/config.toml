@@ -6,6 +6,7 @@ ENV_CRATES_DIR = { value = "crates", relative = true }
 
 [alias]
 build-release = "build --release --timings=html"
+xtask         = "run --package xtask --"
 
 [build]
 rustflags = ["-Z", "threads=8"]
