@@ -14,7 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install tool
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-nextest,cargo-insta
+
+      - name: Run test
+        run: cargo xtest --verbose
+
       - name: Build
         run: cargo build --verbose
-      - name: Run tests
-        run: cargo test --verbose
+
+      - name: Run xtask
+        run: cargo xtask --verbose

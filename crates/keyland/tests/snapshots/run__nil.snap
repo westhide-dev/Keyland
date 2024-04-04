@@ -1,0 +1,5 @@
+---
+source: crates/keyland/tests/run.rs
+expression: "format!(\"{NIL:?}\")"
+---
+()
