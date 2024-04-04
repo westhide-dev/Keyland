@@ -1,5 +1,5 @@
 [workspace]
-members  = ["crates/keyland", "script/xtask"]
+members  = ["crates/kerror", "crates/keyland", "script/xtask"]
 resolver = "2"
 
 
@@ -12,6 +12,7 @@ version    = "0.1.0"
 
 
 [workspace.dependencies]
+kerror.path  = "crates/kerror"
 keyland.path = "crates/keyland"
 
 

@@ -10,6 +10,7 @@ name = "keyland"
 path = "src/lib.rs"
 
 [dependencies]
+kerror.workspace    = true
 serde.workspace     = true
 toml.workspace      = true
 toml_edit.workspace = true

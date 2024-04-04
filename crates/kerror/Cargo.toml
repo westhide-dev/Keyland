@@ -1,0 +1,12 @@
+[package]
+description       = "kerror"
+edition.workspace = true
+license.workspace = true
+name              = "kerror"
+version.workspace = true
+
+
+[dependencies]
+thiserror.workspace = true
+
+toml.workspace = true
