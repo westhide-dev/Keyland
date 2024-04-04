@@ -5,5 +5,11 @@ license.workspace = true
 name              = "keyland"
 version.workspace = true
 
+[lib]
+name = "keyland"
+path = "src/lib.rs"
 
 [dependencies]
+serde.workspace     = true
+toml.workspace      = true
+toml_edit.workspace = true
