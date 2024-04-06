@@ -1,10 +1,11 @@
 [package]
-edition.workspace = true
-license.workspace = true
-name              = "xtask"
-version.workspace = true
+edition = { workspace = true }
+license = { workspace = true }
+name    = "xtask"
+version = { workspace = true }
+
 
 [dependencies]
-clap.workspace    = true
-kerror.workspace  = true
-keyland.workspace = true
+clap    = { workspace = true }
+kerror  = { workspace = true }
+keyland = { workspace = true }

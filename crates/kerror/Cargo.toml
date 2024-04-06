@@ -1,13 +1,13 @@
 [package]
-description       = "kerror"
-edition.workspace = true
-license.workspace = true
-name              = "kerror"
-version.workspace = true
+description = "kerror"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "kerror"
+version     = { workspace = true }
 
 
 [dependencies]
-thiserror.workspace = true
+thiserror = { workspace = true }
 
-rkyv.workspace = true
-toml.workspace = true
+rkyv = { workspace = true }
+toml = { workspace = true }
