@@ -1,12 +1,15 @@
-use std::io;
+mod rkyv;
 
 #[derive(Debug, thiserror::Error)]
 pub enum KError {
     #[error(transparent)]
-    IO(#[from] io::Error),
+    StdIO(#[from] std::io::Error),
 
     #[error(transparent)]
     TomlDeserialize(#[from] toml::de::Error),
+
+    #[error(transparent)]
+    RkyvCompositeSerializer(#[from] rkyv::RkyvCompositeSerializer),
 
     #[error("{0}")]
     KError(String),

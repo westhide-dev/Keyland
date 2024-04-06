@@ -9,4 +9,5 @@ version.workspace = true
 [dependencies]
 thiserror.workspace = true
 
+rkyv.workspace = true
 toml.workspace = true
