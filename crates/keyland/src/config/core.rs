@@ -13,7 +13,7 @@ mod tests {
 
     #[test]
     fn version() -> KResult<Nil> {
-        let kl = toml::from_str::<Keyland>(r#"version = '0.1.0'"#)?;
+        let kl = toml::from_str::<Keyland>(r"version = '0.1.0'")?;
 
         assert_eq!(kl.version, "0.1.0");
 

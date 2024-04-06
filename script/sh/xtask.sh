@@ -6,13 +6,13 @@ CURRENT_DIR=$(dirname $0)
 KEYLAND_DIR=$(cd ${CURRENT_DIR}/../../ & pwd)
 
 # Check
-cargo check  --verbose    --color always
+cargo check  --verbose    --color always --all-targets --all-features
 
 # Format
 cargo fmt    --verbose -- --color always
 
 # Lint
-cargo clippy --verbose    --color always
+cargo clippy --verbose    --color always --all-targets --all-features
 
 # Test
-cargo xtest               --color always
+cargo xtest               --color always --all-targets --all-features

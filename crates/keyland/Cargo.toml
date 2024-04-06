@@ -6,6 +6,10 @@ name        = "keyland"
 version     = { workspace = true }
 
 
+[lints]
+workspace = true
+
+
 [lib]
 name = "keyland"
 path = "src/lib.rs"

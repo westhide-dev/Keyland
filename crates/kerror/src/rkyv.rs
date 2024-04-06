@@ -5,4 +5,4 @@ use rkyv::ser::serializers::{
 };
 
 #[rustfmt::skip]
-pub type RkyvCompositeSerializer = CompositeSerializerError<Infallible, AllocScratchError, SharedSerializeMapError>;
+pub type CompositeSerializer = CompositeSerializerError<Infallible, AllocScratchError, SharedSerializeMapError>;

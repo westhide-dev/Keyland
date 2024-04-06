@@ -9,7 +9,7 @@ pub enum KError {
     TomlDeserialize(#[from] toml::de::Error),
 
     #[error(transparent)]
-    RkyvCompositeSerializer(#[from] rkyv::RkyvCompositeSerializer),
+    RkyvCompositeSerializer(#[from] rkyv::CompositeSerializer),
 
     #[error("{0}")]
     KError(String),

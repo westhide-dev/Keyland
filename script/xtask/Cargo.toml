@@ -5,6 +5,10 @@ name    = "xtask"
 version = { workspace = true }
 
 
+[lints]
+workspace = true
+
+
 [dependencies]
 clap    = { workspace = true }
 kerror  = { workspace = true }
