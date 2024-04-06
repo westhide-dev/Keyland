@@ -8,6 +8,9 @@ use clap::Parser;
 struct Cli {
     #[arg(long, default_value_t = String::from("xtask"))]
     name: String,
+
+    #[arg(long)]
+    verbose: bool,
 }
 
 fn main() {
@@ -18,7 +21,7 @@ fn main() {
     let keyland_dir = env!("CARGO_RUSTC_CURRENT_DIR");
     let xtask_sh_file = format!("{keyland_dir}/script/sh/xtask.sh");
 
-    command::run("bash", &[&xtask_sh_file]).unwrap();
+    command::run("bash", &[&xtask_sh_file], cli.verbose).unwrap();
 
     println!("Done: {}", cli.name);
 }

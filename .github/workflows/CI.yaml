@@ -21,7 +21,7 @@ jobs:
           tool: cargo-nextest,cargo-insta
 
       - name: Run test
-        run: cargo xtest --verbose
+        run: cargo xtest --verbose --release
 
       - name: Build
         run: cargo build --verbose
