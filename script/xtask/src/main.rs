@@ -1,6 +1,8 @@
 mod command;
 
 use clap::Parser;
+use kerror::KResult;
+use keyland::nil::{Nil, NIL};
 
 /// Keyland xtask
 #[derive(Debug, Parser)]
@@ -13,7 +15,7 @@ struct Cli {
     verbose: bool,
 }
 
-fn main() {
+fn main() -> KResult<Nil> {
     let cli = Cli::parse();
 
     println!("Init: {}", cli.name);
@@ -21,7 +23,9 @@ fn main() {
     let keyland_dir = env!("CARGO_RUSTC_CURRENT_DIR");
     let xtask_sh_file = format!("{keyland_dir}/script/sh/xtask.sh");
 
-    command::run("bash", &[&xtask_sh_file], cli.verbose).unwrap();
+    command::run("bash", &[&xtask_sh_file], cli.verbose)?;
 
     println!("Done: {}", cli.name);
+
+    Ok(NIL)
 }
