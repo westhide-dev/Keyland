@@ -5,3 +5,6 @@ name              = "xtask"
 version.workspace = true
 
 [dependencies]
+clap.workspace    = true
+kerror.workspace  = true
+keyland.workspace = true
