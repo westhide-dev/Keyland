@@ -6,6 +6,9 @@ pub enum KError {
     StdIO(#[from] std::io::Error),
 
     #[error(transparent)]
+    StdEnvVar(#[from] std::env::VarError),
+
+    #[error(transparent)]
     TomlDeserialize(#[from] toml::de::Error),
 
     #[error(transparent)]

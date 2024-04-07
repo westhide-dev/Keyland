@@ -26,3 +26,8 @@ toml_edit = { workspace = true }
 
 [dev-dependencies]
 insta = { workspace = true }
+
+
+[build-dependencies]
+kcommon = { workspace = true }
+kerror  = { workspace = true }
