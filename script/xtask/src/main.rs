@@ -1,8 +1,8 @@
 mod command;
 
 use clap::Parser;
+use kcommon::nil::{Nil, NIL};
 use kerror::KResult;
-use keyland::nil::{Nil, NIL};
 
 /// Keyland xtask
 #[derive(Debug, Parser)]

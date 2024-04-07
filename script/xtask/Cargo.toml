@@ -11,5 +11,5 @@ workspace = true
 
 [dependencies]
 clap    = { workspace = true }
+kcommon = { workspace = true }
 kerror  = { workspace = true }
-keyland = { workspace = true }

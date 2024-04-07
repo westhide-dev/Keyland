@@ -1,0 +1,13 @@
+[package]
+description = "kcommon"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "kcommon"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]

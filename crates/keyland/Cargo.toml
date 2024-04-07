@@ -16,6 +16,7 @@ path = "src/lib.rs"
 
 
 [dependencies]
+kcommon   = { workspace = true }
 kerror    = { workspace = true }
 rkyv      = { workspace = true }
 serde     = { workspace = true }

@@ -1,5 +1,5 @@
 use insta::assert_snapshot;
-use keyland::prelude::*;
+use kcommon::nil::NIL;
 
 #[test]
 fn nil() {

@@ -6,10 +6,10 @@ pub struct Keyland {
 
 #[cfg(test)]
 mod tests {
+    use kcommon::nil::{Nil, NIL};
     use kerror::KResult;
 
     use super::*;
-    use crate::prelude::*;
 
     #[test]
     fn version() -> KResult<Nil> {

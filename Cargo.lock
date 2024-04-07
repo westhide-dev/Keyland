@@ -238,6 +238,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "kcommon"
+version = "0.1.0"
+
+[[package]]
 name = "kerror"
 version = "0.1.0"
 dependencies = [
@@ -251,6 +255,7 @@ name = "keyland"
 version = "0.1.0"
 dependencies = [
  "insta",
+ "kcommon",
  "kerror",
  "rkyv",
  "serde",
@@ -639,6 +644,6 @@ name = "xtask"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "kcommon",
  "kerror",
- "keyland",
 ]
