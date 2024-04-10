@@ -1,0 +1,84 @@
+[submodule "contrib/aHash"]
+	path = contrib/aHash
+	url = git@github.com:tkaitchuck/aHash.git
+    branch = v0.8.11
+[submodule "contrib/bytecheck"]
+	path = contrib/bytecheck
+	url = git@github.com:rkyv/bytecheck.git
+	branch = v0.7.0
+[submodule "contrib/cfg-if"]
+	path = contrib/cfg-if
+	url = git@github.com:rust-lang/cfg-if.git
+	branch = 1.0.0
+[submodule "contrib/equivalent"]
+	path = contrib/equivalent
+	url = git@github.com:indexmap-rs/equivalent.git
+	branch = v1.0.1
+[submodule "contrib/getrandom"]
+	path = contrib/getrandom
+	url = git@github.com:rust-random/getrandom.git
+	branch = v0.2.14
+[submodule "contrib/hashbrown"]
+	path = contrib/hashbrown
+	url = git@github.com:rust-lang/hashbrown.git
+	branch = v0.14.4
+[submodule "contrib/indexmap"]
+	path = contrib/indexmap
+	url = git@github.com:indexmap-rs/indexmap.git
+	branch = 2.2.6
+[submodule "contrib/libc"]
+	path = contrib/libc
+	url = git@github.com:rust-lang/libc.git
+	branch = 0.2.153
+[submodule "contrib/once_cell"]
+	path = contrib/once_cell
+	url = git@github.com:matklad/once_cell.git
+	branch = v1.19.0
+[submodule "contrib/proc-macro2"]
+	path = contrib/proc-macro2
+	url = git@github.com:dtolnay/proc-macro2.git
+	branch = 1.0.79
+[submodule "contrib/ptr_meta"]
+	path = contrib/ptr_meta
+	url = git@github.com:rkyv/ptr_meta.git
+	branch = 0.2.0
+[submodule "contrib/quote"]
+	path = contrib/quote
+	url = git@github.com:dtolnay/quote.git
+	branch = 1.0.35
+[submodule "contrib/rend"]
+	path = contrib/rend
+	url = git@github.com:rkyv/rend.git
+	branch = 0.4.1
+[submodule "contrib/rkyv"]
+	path = contrib/rkyv
+	url = git@github.com:rkyv/rkyv.git
+	branch = main
+[submodule "contrib/seahash"]
+	path = contrib/seahash
+	url = https://gitlab.redox-os.org/redox-os/seahash.git
+	branch = v4.1.0
+[submodule "contrib/serde"]
+	path = contrib/serde
+	url = git@github.com:serde-rs/serde.git
+	branch = v1.0.197
+[submodule "contrib/simdutf8"]
+	path = contrib/simdutf8
+	url = git@github.com:rusticstuff/simdutf8.git
+	branch = main
+[submodule "contrib/thiserror"]
+	path = contrib/thiserror
+	url = git@github.com:dtolnay/thiserror.git
+	branch = 1.0.58
+[submodule "contrib/toml"]
+	path = contrib/toml
+	url = git@github.com:toml-rs/toml.git
+	branch = main
+[submodule "contrib/unicode-ident"]
+	path = contrib/unicode-ident
+	url = git@github.com:dtolnay/unicode-ident.git
+	branch = 1.0.12
+[submodule "contrib/winnow"]
+	path = contrib/winnow
+	url = git@github.com:winnow-rs/winnow.git
+	branch = v0.6.5
