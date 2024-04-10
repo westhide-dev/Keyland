@@ -2,8 +2,10 @@
 
 set -ex
 
-CURRENT_DIR=$(dirname $0)
-KEYLAND_DIR=$(cd ${CURRENT_DIR}/../../ & pwd)
+CURRENT_DIR=$(realpath $(dirname $0))
+KEYLAND_DIR=$(realpath ${CURRENT_DIR}/../../)
+
+cd ${KEYLAND_DIR}
 
 # Deps
 cargo tree
