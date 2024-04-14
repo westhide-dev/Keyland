@@ -18,26 +18,31 @@ version    = "0.1.0"
 
 
 [workspace.dependencies]
+# Memeber
 gpu-hal = { path = "crates/gpu-hal" }
 kcommon = { path = "crates/kcommon" }
 kerror  = { path = "crates/kerror" }
 keyland = { path = "crates/keyland" }
 
+# Macro
+quote      = { version = "1.0.33" }
+syn        = { version = "2.0.41", features = ["extra-traits"] }
+syn-select = { version = "0.3.0" }
+
 # Release
 clap      = { version = "4.5.4", features = ["derive"] }
-quote     = { version = "1.0.33" }
-rkyv      = { version = "0.7.44", features = ["validation"] }   # TODO: package
-serde     = { version = "1.0", features = ["derive"] }          # TODO: package
-syn       = { version = "2.0.41", features = ["extra-traits"] }
+rkyv      = { version = "0.7.44", features = ["validation"] } # TODO: package
+serde     = { version = "1.0", features = ["derive"] }        # TODO: package
 thiserror = { version = "1.0.51" }
-toml      = { version = "0.8.12" }                              # TODO: package
+toml      = { version = "0.8.12" }                            # TODO: package
 toml_edit = { version = "0.22.9" }
-wgpu      = { version = "0.19.3" }                              # TODO: package
+wgpu      = { version = "0.19.3" }                            # TODO: package
+
+# Build
 
 # Development
-criterion  = { version = "0.5.1" }
-insta      = { version = "1.34.0" }
-syn-select = { version = "0.3.0" }
+criterion = { version = "0.5.1" }
+insta     = { version = "1.34.0" }
 
 
 [patch.crates-io]
