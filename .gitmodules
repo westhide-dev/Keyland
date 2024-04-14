@@ -78,6 +78,10 @@
 	path = contrib/unicode-ident
 	url = git@github.com:dtolnay/unicode-ident.git
 	branch = 1.0.12
+[submodule "contrib/wgpu"]
+	path = contrib/wgpu
+	url = git@github.com:gfx-rs/wgpu.git
+	branch = trunk
 [submodule "contrib/winnow"]
 	path = contrib/winnow
 	url = git@github.com:winnow-rs/winnow.git

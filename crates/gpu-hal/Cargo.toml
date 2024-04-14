@@ -1,0 +1,13 @@
+[package]
+description = "gpu-hal"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "gpu-hal"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]
