@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "crates/event-uring",
     "crates/gpu-hal",
     "crates/kcommon",
     "crates/kerror",
@@ -19,10 +20,11 @@ version    = "0.1.0"
 
 [workspace.dependencies]
 # Memeber
-gpu-hal = { path = "crates/gpu-hal" }
-kcommon = { path = "crates/kcommon" }
-kerror  = { path = "crates/kerror" }
-keyland = { path = "crates/keyland" }
+event-uring = { path = "crates/event-uring" }
+gpu-hal     = { path = "crates/gpu-hal" }
+kcommon     = { path = "crates/kcommon" }
+kerror      = { path = "crates/kerror" }
+keyland     = { path = "crates/keyland" }
 
 # Macro
 quote      = { version = "1.0.33" }

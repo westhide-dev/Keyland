@@ -1,0 +1,3 @@
+//! [Uring]
+
+pub trait Uring {}

@@ -1,0 +1,3 @@
+//! [Event]
+
+pub trait Event {}

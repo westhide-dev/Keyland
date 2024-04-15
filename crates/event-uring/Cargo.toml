@@ -1,0 +1,20 @@
+[package]
+description = "event-uring"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "event-uring"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]
+
+
+[features]
+default        = ["platform_linux", "platform_macos", "platform_webos"]
+platform_linux = []
+platform_macos = []
+platform_webos = []
