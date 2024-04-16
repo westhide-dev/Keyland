@@ -3,6 +3,7 @@ protocol = "sparse"
 
 [env]
 ENV_CRATES_DIR = { value = "crates", relative = true }
+RUST_LOG       = { value = "TRACE" }
 
 [alias]
 build-release = "build --release --timings=html"
