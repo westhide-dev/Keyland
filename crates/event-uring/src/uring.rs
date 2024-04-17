@@ -1,3 +1,3 @@
 //! [Uring]
 
-pub trait Uring {}
+pub struct Uring {}

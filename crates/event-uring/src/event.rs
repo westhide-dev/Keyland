@@ -1,3 +1,3 @@
 //! [Event]
 
-pub trait Event {}
+pub enum Event {}
