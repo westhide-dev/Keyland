@@ -10,10 +10,6 @@ version     = { workspace = true }
 workspace = true
 
 
-[lints.clippy]
-unused_attributes = "allow"
-
-
 [dependencies]
 
 
