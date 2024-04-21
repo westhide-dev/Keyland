@@ -1,3 +1,0 @@
-//! [Event]
-
-pub enum Event {}

@@ -1,3 +1,0 @@
-//! [Uring]
-
-pub struct Uring {}

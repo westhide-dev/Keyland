@@ -11,10 +11,12 @@ workspace = true
 
 
 [dependencies]
+kmacro = { workspace = true }
 
 
 [features]
-default        = ["platform_linux", "platform_macos", "platform_webos"]
+default        = ["platform_linux", "platform_macos", "platform_webos", "protocol"]
 platform_linux = []
 platform_macos = []
 platform_webos = []
+protocol       = []

@@ -1,0 +1,20 @@
+[package]
+description = "kmacro"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "kmacro"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[lib]
+proc-macro = true
+
+
+[dependencies]
+proc-macro2 = { workspace = true }
+quote       = { workspace = true }
+syn         = { workspace = true }

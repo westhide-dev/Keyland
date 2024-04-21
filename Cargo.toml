@@ -5,6 +5,7 @@ members = [
     "crates/kcommon",
     "crates/kerror",
     "crates/keyland",
+    "crates/kmacro",
     "script/xtask"
 ]
 resolver = "2"
@@ -25,11 +26,13 @@ gpu-hal     = { path = "crates/gpu-hal" }
 kcommon     = { path = "crates/kcommon" }
 kerror      = { path = "crates/kerror" }
 keyland     = { path = "crates/keyland" }
+kmacro      = { path = "crates/kmacro" }
 
 # Macro
-quote      = { version = "1.0.33" }
-syn        = { version = "2.0.41", features = ["extra-traits"] }
-syn-select = { version = "0.3.0" }
+proc-macro2 = { version = "1.0.81" }
+quote       = { version = "1.0.33" }
+syn         = { version = "2.0.41", features = ["extra-traits", "full"] }
+syn-select  = { version = "0.3.0" }
 
 # Release
 clap      = { version = "4.5.4", features = ["derive"] }
