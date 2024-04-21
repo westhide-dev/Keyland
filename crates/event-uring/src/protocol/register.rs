@@ -1,10 +1,11 @@
-use crate::protocol::ident::Ident;
+use crate::protocol::{event::Event, ident::Ident};
 
-pub trait Register<I>
+pub trait Register<I, E>
 where
     I: Ident,
+    E: Event,
 {
-    fn register() -> I;
+    fn register(&mut self, event: E) -> I;
 
-    fn unregister(ident: &I);
+    fn unregister(&mut self, ident: I);
 }

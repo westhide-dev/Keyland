@@ -1,36 +1,46 @@
-use std::marker::PhantomData;
+use std::sync::atomic::{AtomicBool, Ordering};
 
-use crate::protocol;
+use crate::{ident::Ident, protocol};
 
-pub struct EventUring<I, E>
+pub struct EventUring<E>
 where
     E: protocol::event::Event,
 {
+    pub stat: AtomicBool,
     pub events: Vec<E>,
-    _marker_: PhantomData<I>,
+
+    reserve_idents: Vec<Ident>,
 }
 
-impl<I, E> protocol::register::Register<I> for EventUring<I, E>
+impl<E> protocol::register::Register<Ident, E> for EventUring<E>
 where
-    I: protocol::ident::Ident,
     E: protocol::event::Event,
 {
-    fn register() -> I {
-        todo!()
+    fn register(&mut self, event: E) -> Ident {
+        let Self { reserve_idents, events, .. } = self;
+
+        let ident = match reserve_idents.pop() {
+            Some(ident) => ident,
+            None => Ident::new(events.len()),
+        };
+
+        events[ident.index] = event;
+
+        ident
     }
 
-    fn unregister(ident: &I) {
-        todo!()
+    fn unregister(&mut self, ident: Ident) {
+        self.reserve_idents.push(ident);
+        todo!("remove event")
     }
 }
 
-impl<I, E> protocol::event_uring::EventUring<I, E> for EventUring<I, E>
+impl<E> protocol::event_uring::EventUring<Ident, E> for EventUring<E>
 where
-    I: protocol::ident::Ident,
     E: protocol::event::Event,
 {
     fn stat(&self) -> bool {
-        todo!()
+        self.stat.load(Ordering::Acquire)
     }
 
     fn run(&mut self) {
