@@ -1,3 +1,7 @@
+use kcommon::nil::Nil;
+
 pub trait Event {
-    fn process(&mut self);
+    type Err;
+
+    fn process(&mut self) -> Result<Nil, Self::Err>;
 }

@@ -11,7 +11,8 @@ workspace = true
 
 
 [dependencies]
-kmacro = { workspace = true }
+kcommon = { workspace = true }
+kmacro  = { workspace = true }
 
 
 [features]

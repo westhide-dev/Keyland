@@ -1,13 +1,13 @@
-use crate::protocol::{event::Event, ident::Ident, register::Register};
+use kcommon::nil::Nil;
 
-pub trait EventUring<I, E>: Register<I, E>
-where
-    I: Ident,
-    E: Event,
-{
+use crate::protocol::event::Event;
+
+pub trait EventUring {
+    type Event: Event;
+
     fn stat(&self) -> bool;
 
-    fn run(&mut self);
+    fn run(&mut self) -> Result<Nil, <Self::Event as Event>::Err>;
 
     fn stop(&mut self);
 }

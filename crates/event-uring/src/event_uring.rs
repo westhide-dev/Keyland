@@ -1,53 +1,105 @@
 use std::sync::atomic::{AtomicBool, Ordering};
 
-use crate::{ident::Ident, protocol};
+use kcommon::nil::{Nil, NIL};
 
-pub struct EventUring<E>
+use crate::{
+    ident::Ident,
+    protocol::{self, event::Event, register::Register},
+};
+
+pub struct EventUring<T>
 where
-    E: protocol::event::Event,
+    T: Event,
 {
-    pub stat: AtomicBool,
-    pub events: Vec<E>,
-
+    pub events: Vec<Option<T>>,
     reserve_idents: Vec<Ident>,
+
+    pub running: AtomicBool,
 }
 
-impl<E> protocol::register::Register<Ident, E> for EventUring<E>
+impl<T> Register for EventUring<T>
 where
-    E: protocol::event::Event,
+    T: Event,
 {
-    fn register(&mut self, event: E) -> Ident {
+    type Event = T;
+    type Ident = Ident;
+
+    fn register(&mut self, event: T) -> Ident {
         let Self { reserve_idents, events, .. } = self;
 
-        let ident = match reserve_idents.pop() {
-            Some(ident) => ident,
-            None => Ident::new(events.len()),
-        };
+        if let Some(mut ident) = reserve_idents.pop() {
+            events[ident.idx] = Some(event);
 
-        events[ident.index] = event;
+            ident.ver += 1;
 
-        ident
+            ident
+        } else {
+            let idx = events.len();
+
+            events.push(Some(event));
+
+            Ident::new(idx, 0)
+        }
     }
 
-    fn unregister(&mut self, ident: Ident) {
+    fn unregister(&mut self, ident: Ident) -> Option<T> {
+        let event = self.events[ident.idx].take();
+
         self.reserve_idents.push(ident);
-        todo!("remove event")
+
+        event
     }
 }
 
-impl<E> protocol::event_uring::EventUring<Ident, E> for EventUring<E>
+impl<T> protocol::event_uring::EventUring for EventUring<T>
 where
-    E: protocol::event::Event,
+    T: Event,
 {
+    type Event = T;
+
     fn stat(&self) -> bool {
-        self.stat.load(Ordering::Acquire)
+        self.is_running()
     }
 
-    fn run(&mut self) {
-        todo!()
+    fn run(&mut self) -> Result<Nil, T::Err> {
+        self.keep_running();
+
+        while self.is_running() {
+            self.dispatch()?;
+        }
+
+        Ok(NIL)
     }
 
     fn stop(&mut self) {
-        todo!()
+        self.stop_running();
+    }
+}
+
+impl<T> EventUring<T>
+where
+    T: Event,
+{
+    #[inline]
+    pub fn is_running(&self) -> bool {
+        self.running.load(Ordering::Acquire)
+    }
+
+    #[inline]
+    pub fn keep_running(&self) {
+        self.running.store(true, Ordering::Release);
+    }
+
+    #[inline]
+    pub fn stop_running(&self) {
+        self.running.store(false, Ordering::Release);
+    }
+
+    pub fn dispatch(&mut self) -> Result<Nil, T::Err> {
+        for event in self.events.iter_mut().flatten() {
+            event.process()?;
+        }
+
+        Ok(NIL)
     }
 }

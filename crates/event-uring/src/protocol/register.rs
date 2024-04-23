@@ -1,11 +1,10 @@
 use crate::protocol::{event::Event, ident::Ident};
 
-pub trait Register<I, E>
-where
-    I: Ident,
-    E: Event,
-{
-    fn register(&mut self, event: E) -> I;
+pub trait Register {
+    type Event: Event;
+    type Ident: Ident;
 
-    fn unregister(&mut self, ident: I);
+    fn register(&mut self, event: Self::Event) -> Self::Ident;
+
+    fn unregister(&mut self, ident: Self::Ident) -> Option<Self::Event>;
 }

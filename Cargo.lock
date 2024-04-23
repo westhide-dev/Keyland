@@ -177,6 +177,7 @@ version = "1.0.1"
 name = "event-uring"
 version = "0.1.0"
 dependencies = [
+ "kcommon",
  "kmacro",
 ]
 

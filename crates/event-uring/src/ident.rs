@@ -1,14 +1,15 @@
 use crate::protocol;
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 pub struct Ident {
-    pub index: usize,
+    pub idx: usize,
+    pub ver: usize,
 }
 
 impl protocol::ident::Ident for Ident {}
 
 impl Ident {
-    pub fn new(index: usize) -> Self {
-        Self { index }
+    pub fn new(idx: usize, ver: usize) -> Self {
+        Self { idx, ver }
     }
 }
