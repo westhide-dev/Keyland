@@ -46,7 +46,7 @@ mod tests {
     use kcommon::nil::{Nil, NIL};
 
     use super::*;
-    use crate::protocol::{event_uring::EventUring as _, register::Register};
+    use crate::protocol::{event_loop::EventLoop, register::Register};
 
     #[test]
     fn handler() {
@@ -68,7 +68,7 @@ mod tests {
             fn process(&mut self) -> Result<Self::Ret, Self::Err> {
                 self.cnt += 1;
 
-                self.handler.stop_running();
+                self.handler.stop();
 
                 Ok(NIL)
             }

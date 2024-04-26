@@ -5,7 +5,7 @@ use kcommon::nil::{Nil, NIL};
 use crate::{
     handler::Handler,
     ident::Ident,
-    protocol::{self, event::Event, register::Register},
+    protocol::{event::Event, event_loop::EventLoop, register::Register},
 };
 
 #[derive(Debug, Default)]
@@ -46,7 +46,7 @@ where
     }
 }
 
-impl<T> protocol::event_uring::EventUring for EventUring<T>
+impl<T> EventLoop for EventUring<T>
 where
     T: Event,
 {
@@ -94,12 +94,12 @@ where
     }
 
     #[inline]
-    pub fn keep_running(&self) {
+    fn keep_running(&self) {
         self.running.store(true, Ordering::Release);
     }
 
     #[inline]
-    pub fn stop_running(&self) {
+    fn stop_running(&self) {
         self.running.store(false, Ordering::Release);
     }
 

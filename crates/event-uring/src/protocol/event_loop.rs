@@ -2,7 +2,7 @@ use kcommon::nil::Nil;
 
 use crate::protocol::event::Event;
 
-pub trait EventUring {
+pub trait EventLoop {
     type Event: Event;
 
     fn stat(&self) -> bool;
