@@ -6,7 +6,6 @@ use kmacro::vis_make;
 mod protocol;
 
 pub mod event_uring;
+pub mod handler;
 pub mod ident;
 pub mod platform;
-
-pub struct EventUring;
