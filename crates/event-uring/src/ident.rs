@@ -8,7 +8,8 @@ pub struct Ident {
 impl protocol::ident::Ident for Ident {}
 
 impl Ident {
-    pub fn new(idx: usize) -> Self {
+    #[must_use]
+    pub const fn new(idx: usize) -> Self {
         Self { idx }
     }
 }

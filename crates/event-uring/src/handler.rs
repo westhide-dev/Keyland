@@ -1,9 +1,12 @@
-use std::{
-    ops::{Deref, DerefMut},
-    ptr::NonNull,
-};
+use std::ptr::NonNull;
 
-use crate::{event_uring::EventUring, protocol::event::Event};
+use kcommon::nil::Nil;
+
+use crate::{
+    event_uring::EventUring,
+    ident::Ident,
+    protocol::{event::Event, event_loop::EventLoop, register::Register},
+};
 
 pub struct Handler<T>
 where
@@ -16,28 +19,45 @@ impl<T> Handler<T>
 where
     T: Event,
 {
+    /// # Safety
     pub unsafe fn new(event_uring: &mut EventUring<T>) -> Self {
         Self { ptr: NonNull::new_unchecked(event_uring) }
     }
-}
 
-impl<T> Deref for Handler<T>
-where
-    T: Event,
-{
-    type Target = EventUring<T>;
-
-    fn deref(&self) -> &Self::Target {
+    fn as_inner(&self) -> &EventUring<T> {
         unsafe { self.ptr.as_ref() }
+    }
+
+    fn as_inner_mut(&mut self) -> &mut EventUring<T> {
+        unsafe { self.ptr.as_mut() }
+    }
+
+    /// # Errors
+    pub fn register_in_place(&mut self, event: T) -> Result<Ident, T> {
+        self.as_inner_mut().register_in_place(event)
+    }
+
+    pub fn unregister(&mut self, ident: Ident) -> Option<T> {
+        self.as_inner_mut().unregister(ident)
     }
 }
 
-impl<T> DerefMut for Handler<T>
+impl<T> EventLoop for Handler<T>
 where
     T: Event,
 {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        unsafe { self.ptr.as_mut() }
+    type Event = T;
+
+    fn stat(&self) -> bool {
+        self.as_inner().stat()
+    }
+
+    fn run(&mut self) -> Result<Nil, T::Err> {
+        self.as_inner_mut().run()
+    }
+
+    fn stop(&mut self) {
+        self.as_inner_mut().stop();
     }
 }
 
@@ -46,7 +66,6 @@ mod tests {
     use kcommon::nil::{Nil, NIL};
 
     use super::*;
-    use crate::protocol::{event_loop::EventLoop, register::Register};
 
     #[test]
     fn handler() {

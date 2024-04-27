@@ -79,6 +79,7 @@ where
     //     std::mem::transmute(self as *mut Self)
     // }
 
+    #[must_use]
     pub const fn new() -> Self {
         Self { events: Vec::new(), idents: Vec::new(), running: AtomicBool::new(false) }
     }
@@ -123,6 +124,24 @@ where
         Ok(NIL)
     }
 
+    /// # Errors
+    pub fn register_in_place(&mut self, event: T) -> Result<Ident, T> {
+        if let Some(ident) = self.idents.pop() {
+            self.fill_event(ident.idx, event);
+
+            return Ok(ident);
+        }
+
+        if self.size() == self.events.capacity() {
+            Err(event)
+        } else {
+            self.push_event(event);
+
+            Ok(Ident::new(self.size() - 1))
+        }
+    }
+
+    /// # Safety
     pub unsafe fn handler(&mut self) -> Handler<T> {
         Handler::new(self)
     }

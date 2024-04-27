@@ -7,6 +7,7 @@ pub trait EventLoop {
 
     fn stat(&self) -> bool;
 
+    /// # Errors
     fn run(&mut self) -> Result<Nil, <Self::Event as Event>::Err>;
 
     fn stop(&mut self);
