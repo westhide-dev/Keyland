@@ -27,22 +27,29 @@ where
     type Event = T;
     type Ident = Ident;
 
-    fn register(&mut self, event: T) -> Ident {
+    fn register(&mut self, event: T) -> Result<Ident, T> {
         if let Some(ident) = self.idents.pop() {
             self.fill_event(ident.idx, event);
 
-            ident
+            Ok(ident)
         } else {
             self.push_event(event);
 
-            Ident::new(self.size() - 1)
+            Ok(Ident::new(self.size() - 1))
         }
     }
 
-    fn unregister(&mut self, ident @ Ident { idx, .. }: Ident) -> Option<T> {
+    fn unregist(&mut self, ident @ Ident { idx, .. }: Ident) -> Result<T, Ident> {
+        if self.events[idx].is_none() {
+            return Err(ident)
+        }
+
         self.idents.push(ident);
 
-        self.take_event(idx)
+        match self.take_event(idx) {
+            Some(event) => Ok(event),
+            None => unreachable!(),
+        }
     }
 }
 
@@ -51,10 +58,6 @@ where
     T: Event,
 {
     type Event = T;
-
-    fn stat(&self) -> bool {
-        self.is_running()
-    }
 
     fn run(&mut self) -> Result<Nil, T::Err> {
         self.keep_running();
@@ -175,7 +178,7 @@ mod tests {
 
         let mut event_uring = EventUring::new();
 
-        event_uring.register(Counter::new(0));
+        event_uring.register(Counter::new(0)).ok();
 
         assert!(!event_uring.is_running());
     }

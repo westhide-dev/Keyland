@@ -32,13 +32,19 @@ where
         unsafe { self.ptr.as_mut() }
     }
 
+    #[must_use]
+    pub fn is_running(&self) -> bool {
+        self.as_inner().is_running()
+    }
+
     /// # Errors
     pub fn register_in_place(&mut self, event: T) -> Result<Ident, T> {
         self.as_inner_mut().register_in_place(event)
     }
 
-    pub fn unregister(&mut self, ident: Ident) -> Option<T> {
-        self.as_inner_mut().unregister(ident)
+    /// # Errors
+    pub fn unregist(&mut self, ident: Ident) -> Result<T, Ident> {
+        self.as_inner_mut().unregist(ident)
     }
 }
 
@@ -47,10 +53,6 @@ where
     T: Event,
 {
     type Event = T;
-
-    fn stat(&self) -> bool {
-        self.as_inner().stat()
-    }
 
     fn run(&mut self) -> Result<Nil, T::Err> {
         self.as_inner_mut().run()
@@ -97,15 +99,15 @@ mod tests {
 
         let handler = unsafe { event_uring.handler() };
 
-        let ident = event_uring.register(Counter::new(0, handler));
+        let Ok(ident) = event_uring.register(Counter::new(0, handler)) else { unreachable!() };
 
         assert!(!event_uring.is_running());
 
         event_uring.run().ok();
 
-        match event_uring.unregister(ident) {
-            Some(event) => assert_eq!(event.cnt, 1),
-            None => unreachable!(),
+        match event_uring.unregist(ident) {
+            Ok(event) => assert_eq!(event.cnt, 1),
+            Err(_) => unreachable!(),
         }
     }
 }

@@ -4,7 +4,9 @@ pub trait Register {
     type Event: Event;
     type Ident: Ident;
 
-    fn register(&mut self, event: Self::Event) -> Self::Ident;
+    /// # Errors
+    fn register(&mut self, event: Self::Event) -> Result<Self::Ident, Self::Event>;
 
-    fn unregister(&mut self, ident: Self::Ident) -> Option<Self::Event>;
+    /// # Errors
+    fn unregist(&mut self, ident: Self::Ident) -> Result<Self::Event, Self::Ident>;
 }
