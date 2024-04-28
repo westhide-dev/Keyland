@@ -150,6 +150,19 @@ where
     }
 }
 
+impl<T> From<Vec<T>> for EventUring<T>
+where
+    T: Event,
+{
+    fn from(events: Vec<T>) -> Self {
+        Self {
+            events: events.into_iter().map(Option::Some).collect(),
+            idents: Vec::new(),
+            running: AtomicBool::new(false),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
