@@ -6,7 +6,8 @@ members = [
     "crates/kerror",
     "crates/keyland",
     "crates/kmacro",
-    "script/xtask"
+    "crates/wayland-parser",
+    "script/xtask",
 ]
 resolver = "2"
 
@@ -21,12 +22,13 @@ version    = "0.1.0"
 
 [workspace.dependencies]
 # Memeber
-event-uring = { path = "crates/event-uring" }
-gpu-hal     = { path = "crates/gpu-hal" }
-kcommon     = { path = "crates/kcommon" }
-kerror      = { path = "crates/kerror" }
-keyland     = { path = "crates/keyland" }
-kmacro      = { path = "crates/kmacro" }
+event-uring    = { path = "crates/event-uring" }
+gpu-hal        = { path = "crates/gpu-hal" }
+kcommon        = { path = "crates/kcommon" }
+kerror         = { path = "crates/kerror" }
+keyland        = { path = "crates/keyland" }
+kmacro         = { path = "crates/kmacro" }
+wayland-parser = { path = "crates/wayland-parser" }
 
 # Macro
 proc-macro2 = { version = "1.0.81" }

@@ -1,0 +1,13 @@
+[package]
+description = "wayland-parser"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "wayland-parser"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]
