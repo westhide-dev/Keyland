@@ -11,3 +11,4 @@ workspace = true
 
 
 [dependencies]
+kerror = { workspace = true }
