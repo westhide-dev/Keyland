@@ -1,5 +1,9 @@
+pub mod att;
 pub mod comment;
+pub mod element;
 pub mod luts;
+pub mod tag;
+pub mod text;
 pub mod unit;
 
 use std::marker::PhantomData;
@@ -41,13 +45,16 @@ impl<'s> Scaner<'s> {
         unsafe { self.ptr = self.ptr.add(count) }
     }
 
-    pub fn eat(&mut self, byte: u8) -> bool {
-        if self.byte() == byte {
-            self.skip(1);
-            true
-        } else {
-            false
-        }
+    pub fn mklo(&mut self) {
+        self.lo = self.ptr
+    }
+
+    pub fn mkhi(&mut self) {
+        self.hi = self.ptr
+    }
+
+    pub fn data(&self) -> &'s str {
+        unsafe { std::str::from_utf8_unchecked(std::slice::from_ptr_range(self.lo..self.hi)) }
     }
 
     pub fn len(&self) -> usize {
@@ -56,20 +63,6 @@ impl<'s> Scaner<'s> {
 
     pub fn is_empty(&self) -> bool {
         self.ptr == self.end
-    }
-}
-
-impl<'s> Scaner<'s> {
-    pub fn mark_lo(&mut self) {
-        self.lo = self.ptr
-    }
-
-    pub fn mark_hi(&mut self) {
-        self.hi = self.ptr
-    }
-
-    pub fn data(&self) -> &'s str {
-        unsafe { std::str::from_utf8_unchecked(std::slice::from_ptr_range(self.lo..self.hi)) }
     }
 }
 

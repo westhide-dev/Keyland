@@ -29,11 +29,11 @@ const LOOKUP_TABLE: &[Handler; 256] = &[
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // F
 ];
 
-const ___: Handler = |_| {};
-
 const EOF: Handler = |_| {};
+const ___: Handler = |_| {};
 
 const SPC: Handler = |sn: &mut Scaner| {
     sn.skip(1);
-    sn.scan_space()
+
+    sn.scan_space();
 };

@@ -1,15 +1,9 @@
-use crate::scaner::comment::Comment;
+use crate::scaner::{comment::Comment, element::Element};
 
 #[derive(Debug)]
 #[repr(u8)]
 pub enum Unit<'s> {
-    // Keyword(Keyword),
+    Element(Element<'s>),
 
-    // Punctuator(Punctuator),
-
-    // Ident(Ident<'s>),
-
-    // /// literal
-    // Lit(Lit<'s>),
     Comment(Comment<'s>),
 }

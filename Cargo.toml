@@ -7,7 +7,7 @@ members = [
     "crates/keyland",
     "crates/kmacro",
     "crates/wayland-parser",
-    "script/xtask",
+    "script/xtask"
 ]
 resolver = "2"
 
@@ -39,12 +39,13 @@ syn-select  = { version = "0.3.0" }
 # Release
 clap      = { version = "4.5.4", features = ["derive"] }
 log       = { version = "0.4.19" }
-rkyv      = { version = "0.7.44", features = ["validation"] } # TODO: package
-serde     = { version = "1.0", features = ["derive"] }        # TODO: package
+rkyv      = { version = "0.7.44", features = ["validation"] }         # TODO: package
+rustix    = { version = "0.38.34", features = ["event", "io_uring"] }
+serde     = { version = "1.0", features = ["derive"] }                # TODO: package
 thiserror = { version = "1.0.51" }
-toml      = { version = "0.8.13" }                            # TODO: package
+toml      = { version = "0.8.13" }                                    # TODO: package
 toml_edit = { version = "0.22.14" }
-wgpu      = { version = "0.19.3" }                            # TODO: package
+wgpu      = { version = "0.19.3" }                                    # TODO: package
 
 # Build
 

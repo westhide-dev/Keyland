@@ -13,40 +13,55 @@ const LOOKUP_TABLE: &[HANDLER; 256] = &[
     EOF, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 0
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 1
     ___, EXL, DQT, HSH, DOL, PCT, APS, SQT, OPN, CPN, ATR, PLS, CMA, MIS, DOT, SLH, // 2
-    ZRO, DIG, DIG, DIG, DIG, DIG, DIG, DIG, DIG, DIG, CLN, SMI, LST, EQL, GRT, QST, // 3
-    ATS, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, // 4
-    A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, OBT, BSH, CBT, CCF, UDL, // 5
-    GAC, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, // 6
-    A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, A2Z, OBE, VLN, CBE, TID, ___, // 7
+    ZRO, DIG, DIG, DIG, DIG, DIG, DIG, DIG, DIG, DIG, ___, SMI, LST, EQL, GRT, QST, // 3
+    ATS, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 4
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, OBT, BSH, CBT, CCF, ___, // 5
+    GAC, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 6
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, OBE, VLN, CBE, TID, ___, // 7
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 8
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // 9
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // A
     ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // B
-    ___, ___, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, // C
-    UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, // D
-    UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, UNI, // E
-    UNI, UNI, UNI, UNI, UNI, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // F
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // C
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // D
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // E
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, // F
 ];
 
-const ___: HANDLER = |_| unreachable!("Invalid entity byte");
-const UNI: HANDLER = |_| unreachable!("Invalid entity byte");
-
 const EOF: HANDLER = |_| None;
+const ___: HANDLER = |_| unreachable!("Invalid Byte");
 
 /// [NameStartChar](https://www.w3.org/TR/xml/#NT-NameStartChar)
-const NSC: HANDLER = |sn| {
+const ELM: HANDLER = |sn| {
+    sn.mklo();
+    sn.skip(1);
+    sn.scan_name();
+    sn.mkhi();
+
+    todo!()
+};
+
+const TXT: HANDLER = |sn| {
     sn.skip(1);
     todo!()
 };
 
-const A2Z: HANDLER = NSC; // [a-z|A-Z]
-const CLN: HANDLER = NSC; // ':'
-const UDL: HANDLER = NSC; // '_'
-
-const LIT: HANDLER = |sn| {
+const LST: HANDLER = |sn| {
     sn.skip(1);
     todo!()
 };
 
-// [0-9]
-const DIG: HANDLER = LIT;
+const EQL: HANDLER = |sn| {
+    sn.skip(1);
+    todo!()
+};
+
+const GRT: HANDLER = |sn| {
+    sn.skip(1);
+    todo!()
+};
+
+const DQT: HANDLER = |sn| {
+    sn.skip(1);
+    todo!()
+};
