@@ -37,7 +37,7 @@ syn         = { version = "2.0.65", features = ["extra-traits", "full"] }
 syn-select  = { version = "0.3.0" }
 
 # Release
-clap      = { version = "4.5.4", features = ["derive"] }
+clap      = { version = "4.5.6", features = ["derive"] }
 log       = { version = "0.4.19" }
 rkyv      = { version = "0.7.44", features = ["validation"] }         # TODO: package
 rustix    = { version = "0.38.34", features = ["event", "io_uring"] }
