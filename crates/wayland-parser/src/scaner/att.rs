@@ -1,5 +1,5 @@
 #[derive(Debug)]
 pub struct Att<'s> {
-    key: &'s str,
-    val: &'s str,
+    pub key: &'s str,
+    pub val: &'s str,
 }

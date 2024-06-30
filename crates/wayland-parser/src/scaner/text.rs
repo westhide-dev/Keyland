@@ -1,4 +1,4 @@
 #[derive(Debug)]
 pub struct Text<'s> {
-    content: &'s str,
+    pub content: &'s str,
 }

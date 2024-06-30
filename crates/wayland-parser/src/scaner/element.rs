@@ -5,7 +5,7 @@ use crate::scaner::{
 
 #[derive(Debug)]
 pub struct Element<'s> {
-    stag: STag<'s>,
-    text: Text<'s>,
-    etag: ETag<'s>,
+    pub stag: STag<'s>,
+    pub text: Text<'s>,
+    pub etag: ETag<'s>,
 }

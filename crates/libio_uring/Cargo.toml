@@ -1,0 +1,13 @@
+[package]
+description = "libio_uring"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "libio_uring"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]
