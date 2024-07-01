@@ -1,8 +1,8 @@
-use crate::protocol::{event::Event, ident::Ident};
+use crate::protocol::{event::EventΞ, ident::IdentΞ};
 
-pub trait Register {
-    type Event: Event;
-    type Ident: Ident;
+pub trait RegisterΞ {
+    type Event: EventΞ;
+    type Ident: IdentΞ;
 
     /// # Errors
     fn register(&mut self, event: Self::Event) -> Result<Self::Ident, Self::Event>;

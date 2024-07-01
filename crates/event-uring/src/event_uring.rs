@@ -5,13 +5,13 @@ use kcommon::nil::{Nil, NIL};
 use crate::{
     handler::Handler,
     ident::Ident,
-    protocol::{event::Event, event_loop::EventLoop, register::Register},
+    protocol::{event::EventΞ, event_loop::EventLoopΞ, register::RegisterΞ},
 };
 
 #[derive(Debug, Default)]
 pub struct EventUring<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     events: Vec<Option<T>>,
     // unregisted reserve idents
@@ -20,9 +20,9 @@ where
     running: AtomicBool,
 }
 
-impl<T> Register for EventUring<T>
+impl<T> RegisterΞ for EventUring<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     type Event = T;
     type Ident = Ident;
@@ -53,9 +53,9 @@ where
     }
 }
 
-impl<T> EventLoop for EventUring<T>
+impl<T> EventLoopΞ for EventUring<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     type Event = T;
 
@@ -76,7 +76,7 @@ where
 
 impl<T> EventUring<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     // pub unsafe fn get_mut_unchecked<'a>(&mut self) -> &'a mut Self {
     //     std::mem::transmute(self as *mut Self)
@@ -152,7 +152,7 @@ where
 
 impl<T> From<Vec<T>> for EventUring<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     fn from(events: Vec<T>) -> Self {
         Self {
@@ -179,7 +179,7 @@ mod tests {
             }
         }
 
-        impl Event for Counter {
+        impl EventΞ for Counter {
             type Err = Nil;
             type Ret = Nil;
 

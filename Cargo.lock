@@ -311,6 +311,9 @@ version = "0.2.153"
 [[package]]
 name = "libio_uring"
 version = "0.1.0"
+dependencies = [
+ "rustix",
+]
 
 [[package]]
 name = "linked-hash-map"

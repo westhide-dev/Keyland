@@ -5,19 +5,20 @@ use kcommon::nil::Nil;
 use crate::{
     event_uring::EventUring,
     ident::Ident,
-    protocol::{event::Event, event_loop::EventLoop, register::Register},
+    protocol::{event::EventΞ, event_loop::EventLoopΞ, register::RegisterΞ},
 };
 
+#[derive(Debug)]
 pub struct Handler<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     ptr: NonNull<EventUring<T>>,
 }
 
 impl<T> Handler<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     /// # Safety
     pub unsafe fn new(event_uring: &mut EventUring<T>) -> Self {
@@ -48,9 +49,9 @@ where
     }
 }
 
-impl<T> EventLoop for Handler<T>
+impl<T> EventLoopΞ for Handler<T>
 where
-    T: Event,
+    T: EventΞ,
 {
     type Event = T;
 
@@ -82,7 +83,7 @@ mod tests {
             }
         }
 
-        impl Event for Counter {
+        impl EventΞ for Counter {
             type Err = Nil;
             type Ret = Nil;
 

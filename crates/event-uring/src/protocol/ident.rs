@@ -1,1 +1,1 @@
-pub trait Ident {}
+pub trait IdentΞ {}

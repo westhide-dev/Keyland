@@ -5,7 +5,7 @@ pub struct Ident {
     pub idx: usize,
 }
 
-impl protocol::ident::Ident for Ident {}
+impl protocol::ident::IdentΞ for Ident {}
 
 impl Ident {
     #[must_use]

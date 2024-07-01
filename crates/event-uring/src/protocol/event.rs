@@ -1,4 +1,4 @@
-pub trait Event {
+pub trait EventΞ {
     type Ret;
     type Err;
 

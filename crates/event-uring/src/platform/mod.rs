@@ -7,4 +7,4 @@ pub mod macos;
 #[cfg(feature = "platform_webos")]
 pub mod webos;
 
-pub trait Platform {}
+pub trait PlatformΞ {}

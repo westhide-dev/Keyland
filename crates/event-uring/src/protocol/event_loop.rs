@@ -1,12 +1,12 @@
 use kcommon::nil::Nil;
 
-use crate::protocol::event::Event;
+use crate::protocol::event::EventΞ;
 
-pub trait EventLoop {
-    type Event: Event;
+pub trait EventLoopΞ {
+    type Event: EventΞ;
 
     /// # Errors
-    fn run(&mut self) -> Result<Nil, <Self::Event as Event>::Err>;
+    fn run(&mut self) -> Result<Nil, <Self::Event as EventΞ>::Err>;
 
     fn stop(&mut self);
 }
