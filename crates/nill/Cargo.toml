@@ -1,0 +1,13 @@
+[package]
+description = "nil | null"
+edition     = { workspace = true }
+license     = { workspace = true }
+name        = "nill"
+version     = { workspace = true }
+
+
+[lints]
+workspace = true
+
+
+[dependencies]

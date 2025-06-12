@@ -7,8 +7,9 @@ members = [
     "crates/keyland",
     "crates/kmacro",
     "crates/libio_uring",
+    "crates/nill",
     "crates/wayland-parser",
-    "script/xtask"
+    "script/xtask",
 ]
 resolver = "2"
 
@@ -30,6 +31,7 @@ kerror         = { path = "crates/kerror" }
 keyland        = { path = "crates/keyland" }
 kmacro         = { path = "crates/kmacro" }
 libio_uring    = { path = "crates/libio_uring" }
+nill           = { path = "crates/nill" }
 wayland-parser = { path = "crates/wayland-parser" }
 
 # Macro
@@ -63,21 +65,21 @@ tracing-subscriber = { version = "0.3.18" }
 # ptr_meta        = { path = "contrib/ptr_meta/ptr_meta" }
 # ptr_meta_derive = { path = "contrib/ptr_meta/ptr_meta_derive" }
 # rend            = { path = "contrib/rend" }
-cfg-if         = { path = "contrib/cfg-if" }
-equivalent     = { path = "contrib/equivalent" }
-getrandom      = { path = "contrib/getrandom" }
-hashbrown      = { path = "contrib/hashbrown" }
-indexmap       = { path = "contrib/indexmap" }
-libc           = { path = "contrib/libc" }
-once_cell      = { path = "contrib/once_cell" }
-proc-macro2    = { path = "contrib/proc-macro2" }
-quote          = { path = "contrib/quote" }
-seahash        = { path = "contrib/seahash" }
-simdutf8       = { path = "contrib/simdutf8" }
-thiserror      = { path = "contrib/thiserror" }
-thiserror-impl = { path = "contrib/thiserror/impl" }
-unicode-ident  = { path = "contrib/unicode-ident" }
-winnow         = { path = "contrib/winnow" }
+# cfg-if         = { path = "contrib/cfg-if" }
+# equivalent     = { path = "contrib/equivalent" }
+# getrandom      = { path = "contrib/getrandom" }
+# hashbrown      = { path = "contrib/hashbrown" }
+# indexmap       = { path = "contrib/indexmap" }
+# libc           = { path = "contrib/libc" }
+# once_cell      = { path = "contrib/once_cell" }
+# proc-macro2    = { path = "contrib/proc-macro2" }
+# quote          = { path = "contrib/quote" }
+# seahash        = { path = "contrib/seahash" }
+# simdutf8       = { path = "contrib/simdutf8" }
+# thiserror      = { path = "contrib/thiserror" }
+# thiserror-impl = { path = "contrib/thiserror/impl" }
+# unicode-ident  = { path = "contrib/unicode-ident" }
+# winnow         = { path = "contrib/winnow" }
 
 
 [workspace.lints.clippy]
